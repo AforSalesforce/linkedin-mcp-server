@@ -21,15 +21,29 @@ It uses a **Puppeteer** wrapper to automate a browser session with your LinkedIn
 npm install
 ```
 
-### 2. Configure Environment
-1. Create a `.env` file in the root directory (or use the one provided).
-2. Get your **li_at** cookie from LinkedIn:
-   - Open LinkedIn in your browser (Chrome/Edge).
-   - Open Developer Tools (`F12` or Right Click -> Inspect).
-   - Go to the **Application** tab.
-   - Under **Storage** -> **Cookies** -> `https://www.linkedin.com`, find the cookie named `li_at`.
-   - Copy its value.
-3. Paste it into your `.env` file:
+### 2. Configure Environment (Authentication)
+
+This server needs your LinkedIn **li_at** cookie to view full profiles.
+
+**Method A: Automatic (Recommended)**
+
+We have included a helper tool to log you in and save the cookie automatically.
+
+1. Run the auth script:
+   ```bash
+   npm run auth
+   ```
+2. A browser window will open. Log in to LinkedIn.
+3. Once you reach the feed, the script will detect the cookie, save it to `.env`, and close the window automatically.
+
+**Method B: Manual**
+
+1. Create a `.env` file in the root directory.
+2. Open LinkedIn in your browser (Chrome/Edge).
+3. Open Developer Tools (`F12` or Right Click -> Inspect).
+4. Go to the **Application** tab.
+5. Under **Storage** -> **Cookies** -> `https://www.linkedin.com`, find the cookie named `li_at`.
+6. Copy its value and paste it into `.env`:
    ```env
    LINKEDIN_LI_AT_COOKIE="your_cookie_value_here"
    ```
